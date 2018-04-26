@@ -1,0 +1,13 @@
+Package: countRepeats
+Version: 0.99.3
+Date: 04-26-2018
+Title: Hit counts and enrichment/depletion analysis tools for repeat elements
+Author: Chao-Jen Wong
+Maintainer: Chao-Jen Wong <cwon2@fredhutch.org>
+Depends: R (>= 3.4.0), GenomicAlignments
+Imports: BiocParallel, Rsamtools, parallel, DESeq2, ggplot2
+Suggests: BiocStyle, TxDb.Hsapiens.UCSC.hg19.knownGene, SGSeq, knitr, rtracklayer
+biocViews: RNASeq, software
+Collate: rmskStats.R countRepeats.R summarizeRepNameCount.R splitByRepName.R viz.R
+License: Artistics-2.0
+VignetteBuilder: knitr

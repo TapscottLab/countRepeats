@@ -1,0 +1,10 @@
+import(DESeq2)
+import(ggplot2)
+import(BiocParallel)
+
+importFrom(parallel, "mclapply")
+importFrom(Rsamtools, "BamFiles", "BamFileList", "ScanBamParam")
+
+export("splitByRepName", "summarizeOverlaps.adjNH")
+
+
