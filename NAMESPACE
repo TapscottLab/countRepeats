@@ -3,8 +3,8 @@ import(ggplot2)
 import(BiocParallel)
 
 importFrom(parallel, "mclapply")
-importFrom(Rsamtools, "BamFiles", "BamFileList", "ScanBamParam")
+importFrom(Rsamtools, "BamFile", "BamFileList", "ScanBamParam")
 
-export("splitByRepName", "summarizeOverlaps.adjNH")
+export("splitByRepName", "countRepeats", "rmskStats")
 
 
