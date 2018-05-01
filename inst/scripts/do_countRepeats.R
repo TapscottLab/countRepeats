@@ -1,10 +1,14 @@
 #!/app/easybuild/software/R/3.4.3-foss-2016b-fh1/bin/Rscript
 #./do_countHSATII.R
-#SBATCH beagle -M -p largenode --exclusive -n1 
+#SBATCH -M beagle -p largenode --exclusive -n1 
 
 #' This R script is an example for counting HSATII on hg38 genome. 
 #' supports embarrassingly parallel programming (called by example_epp.R)
 #' by taking one sample at a time and run on largenode cluster.
+#' Note that the parameter of countRepeats() is set specifically for
+#' a particular bam files with paired-end reads in which the strand of
+#' origin is carried out by the second reads. One should make the
+#'  parameters to fit his/her circumstences.
 #' 
 #' Input:
 #' -b, --bamfile  bam file name
@@ -36,10 +40,14 @@ if (!file.exists(opt$bamfile)) stop("The bam file does not exist")
 
 #' count start - strand aware, second reads carry strand of origin
 library(countRepeats)
+library(GenomicAlignments)
 features <- get(load(opt$repeats))
-sample_name <- sub(".bam", "", basename(opt$file))
+features <- keepStandardChromosomes(features, pruning.mode="coarse",
+                                    species="Homo_sapiens")
+
+sample_name <- sub(".bam", "", basename(opt$bamfile))
 se <- countRepeats(features=features,
-                   bam_files= opt$file,
+                   bam_files= opt$bamfile,
                    singleEnd=FALSE,
                    type="any",
                    ignore.strand=FALSE,
