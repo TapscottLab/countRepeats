@@ -9,9 +9,12 @@
 #' Input:
 #' -b, --bamfile  bam file name
 #' -r, --repeats  repeat features file name
-#' -o  --out      output directory
+#' -o, --out      output directory
+#'
+#' Get help:
+#' Rscript --vanilla do_countHSATII.R --help
 
-library(countRepeats)
+#' parse argument using python style
 library(optparse)
 option_list <- list(make_option(c("-b", "--bamfile"), type="character",
                                 default=NULL,
@@ -24,7 +27,7 @@ option_list <- list(make_option(c("-b", "--bamfile"), type="character",
                                 default=NULL,
                                 help="output directory",
                                 metavar="character"))
-opt_parser <- Optionparser(option_list=option_list)
+opt_parser <- OptionParser(option_list=option_list)
 opt <- parse_args(opt_parser)
 
 #' sanity check
@@ -32,6 +35,7 @@ if (!file.exists(opt$repeats)) stop("Repeat file does not exist")
 if (!file.exists(opt$bamfile)) stop("The bam file does not exist")
 
 #' count start - strand aware, second reads carry strand of origin
+library(countRepeats)
 features <- get(load(opt$repeats))
 sample_name <- sub(".bam", "", basename(opt$file))
 se <- countRepeats(features=features,
