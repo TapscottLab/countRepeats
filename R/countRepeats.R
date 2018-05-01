@@ -35,7 +35,7 @@ countHits <- function(features, reads, type=c("any", "start", "end", "within"),
                       round.up=round.up)
 }
 
-.bamToGAlignments <- function(bam_file, singeEnd=TRUE, strandMode=1,
+.bamToGAlignments <- function(bam_file, singleEnd=TRUE, strandMode=1,
                               ignore.strand=TRUE) {
     #' take the bam_file and return GAlignmentPairs or GAlignments instance
     flag <- scanBamFlag(isUnmappedQuery = FALSE,
