@@ -1,6 +1,6 @@
 Package: countRepeats
-Version: 0.99.3
-Date: 04-26-2018
+Version: 0.99.4
+Date: 05-01-2018
 Title: Hit counts and enrichment/depletion analysis tools for repeat elements
 Author: Chao-Jen Wong
 Maintainer: Chao-Jen Wong <cwon2@fredhutch.org>
